@@ -49,7 +49,6 @@ def sub_perm(actions,doc,pw,pw_num,edq):
 		print 'next iteration:';print doc[:100];print
 	return doc
 def open_file(action,file):
-	#print file
 	if action == 'e':
 		if type(file) is list:	#incoming "file" is a list of files received from `enc3` bash function
 			print file, type(file),len(file)
@@ -110,7 +109,7 @@ def quit():
 def standard_procedure(edq,which_file):
 	if not which_file:
 		print 'Files and folders available in this directory: ';print '========'
-		subprocess.Popen(['ls'],shell=True)
+		subprocess.Popen(['ls -al'],shell=True)
 		time.sleep(.5);print '========'
 		which_file = ''
 		while not (os.path.exists(which_file) or which_file == 'q'):
@@ -180,7 +179,6 @@ def main():
 		if action not in ['-e','-d']: 
 			print 'Command must specify encryption (-e) or decryption (-d)';quit()
 		if len(sys.argv) == 2:
-			print 'here'
 			standard_procedure(action[1],None) 	#transfer e/d action								#added str here
 		else:	#command line invocation contains filenames
 			valid_files = [];invalid_files = []
